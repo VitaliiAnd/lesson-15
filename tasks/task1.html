@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>
+        <a href="../index.html"> Назад</a>
+    </h3>
+    <p>
+        Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є заєць і 0 в іншому випадку.
+    </p>
+    <script>
+        function shootingGame(rowsNum, columnsNum, rabbitsNum) {
+            this.fieldWithRabbits = this.getField(rowsNum, columnsNum, rabbitsNum)
+        }
+        shootingGame.prototype.getField = function (rowsNum, columnsNum, rabbitsNum){
+            let field = new Array(rowsNum)
+            .fill()
+            .map(elem => (elem = new Array(columnsNum).fill(0)))
+        for (let i = 0; i < rabbitsNum; i++){
+            let randomRowIndex = Math.floor(Math.random() * rowsNum)
+            let randomColumnIndex = Math.floor(Math.random() * rowsNum)
+            field[randomRowIndex][randomColumnIndex] === 0
+            ? (field[randomRowIndex][randomColumnIndex] = 1)
+            : i--
+        }
+        return field
+        }
+
+        shootingGame.prototype.getShot = function(){
+            let userRowIndex = parseInt(prompt('постріл 1'))
+            let userColumnIndex = parseInt(prompt('постріл 2'))
+            if (this.fieldWithRabbits[userRowIndex - 1][userColumnIndex - 1] === 0)
+                alert ('промах')
+            else alert('пряме попадання')
+        }
+
+        shootingGame.prototype.displayField = function (){
+            document.write("<table border='1px'>")
+                for (const row of this.fieldWithRabbits){
+                    document.write('<tr>')
+                        for (const column of row){
+                            document.write(`<td>${column}</td>`)
+                        }
+                        document.write('</tr>')
+                }
+                document.write('</table>')
+        }
+        let rowsNum = parseInt(prompt('кількість рідків'))
+        let columnsNum = parseInt(prompt('кількість стопців'))
+        let rabbitsNum = parseInt(prompt('кількість зайців'))
+        let ShootingGame = new shootingGame(rowsNum, columnsNum, rabbitsNum)
+        ShootingGame.getShot()
+        ShootingGame.displayField()
+        console.log(shootingGame)
+    </script>
+</body>
+</html>

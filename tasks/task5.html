@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>
+        <a href="../index.html"> Назад</a>
+    </h3>
+    <script>
+        const boysNamesList = ['Ivan', 'Petro', 'Ándrew', 'Óleksandr', 'Roman', 'Yurii']
+        const girlsNamesList = ['Olga', 'Maria', 'Viktoria', 'Alina', 'Valeria']
+        class DanceManager {
+            constructor(boysNamesList, girlsNamesList){
+                this.boysNamesList = boysNamesList
+                this.girlsNamesList = girlsNamesList
+            }
+            getRandomIndex(array){
+                return Math.floor(Math.random() * array.length)
+            }
+            getRandomBoyName(){
+                const randomIndex = this.getRandomIndex(this.boysNamesList)
+                return this.boysNamesList(randomIndex)
+            }
+            getRandomGirlName(){
+                const randomIndex = this.getRandomIndex(this.girlsNamesList)
+                return this.girlsNamesList(randomIndex)
+            }
+            displayDanceCouple(){
+                document.write(`${this.getRandomBoyName()} - ${this.getRandomGirlName()}<br>`)
+                }
+            run(){
+                setInterval(() => this.displayDanceCouple(), 5000)
+            }
+        }
+    </script>
+</body>
+</html>

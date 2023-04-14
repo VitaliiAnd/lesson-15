@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>
+        <a href="../index.html"> Назад</a>
+    </h3>
+    <script>
+        function Auto(brand, tankSize, litersNum, seatsNum, passengersNum){
+            this.brand = brand
+            this.tankSize = tankSize
+            this.litersNum = litersNum
+            this.seatsNum = seatsNum
+            this.passengersNum = passengersNum
+        }
+        Auto.prototype.getRefueling = function(addedLitersNum){
+            if (this.litersNum + addedLitersNum <= this.tankSize)
+                this.litersNum += addedLitersNum
+                else throw new Error('Недостатньо місця в баку')
+        }
+        Auto.prototype.getPassengersNum = function(){
+            console.log(`кількість пасажирів:${this.passengersNum}`)
+        }
+        Auto.prototype.addPassengers = function(addedPassengersNum){
+            if (this.passengersNum + addedPassengersNum <= this.seatsNum)
+            this.passengersNum += addedPassengersNum
+            else throw new Error('немає місць')
+        }
+        Auto.prototype.removePassengers = function(removedPassengersNum){
+            if(this.passengersNum - removedPassengersNum >= 0)
+            this.passengersNum - removedPassengersNum
+            else throw new Error('Немає пасажирів')
+        }
+        let auto1 = new Auto('Audi', 65, 30, 5, 2)
+
+        console.log(auto1)
+        auto1.getRefueling(20)
+        console.log(auto1)
+        auto1.getPassengersNum()
+        auto1.addPassengers(2)
+        console.log(auto1)
+        auto1.removePassengers(3)
+        console.log(auto1)
+    </script>
+</body>
+</html>

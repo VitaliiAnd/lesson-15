@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>
+        <a href="../index.html"> Назад</a>
+    </h3>
+    <script>
+        class Array {
+            constructor(link, src){
+                this.link = link
+                this.src = src
+            }
+        }
+        class Baner{
+            constructor(arrImages){
+                this.images = arrImages
+            }
+            getRandomImage(min, max){
+                return min + Math.floor(Math.random() * (max - min +1))
+            }
+            getRenderResult(){
+                let result = this.getRandomImage(0, this.images.length - 1)
+                document.write(`<a href = '${this.images[result].link}' target = '_blank'><img src = '${this.images[result].src}'></a>`)
+            }
+        }
+        let images = [
+            new Array(link = 'https://www.google.com', src = 'https://assets.entrepreneur.com/content/3x2/2000/1661888151-DAL500017.jpg?format=pjeg&auto=webp&crop=16:9&width=675&height=380'),
+            new Array(link = 'https://www.udemy.com', src = 'https://i0.wp.com/egzostive.com/wp-content/uploads/2022/10/0.-C32A8022-9-Copy.jpg?fit=2188%2C1459&ssl=1'),
+            new Array(link = 'https://www.google.com', src = 'https://www.supercars.net/blog/wp-content/uploads/2022/09/Best-New-Sports-and-Performance-Cars-2022_BMW_M4.jpg')
+        ]
+        console.log(images)
+        let result = new Baner(images)
+        console.log(result)
+        result.getRenderResult()
+    </script>
+</body>
+</html>

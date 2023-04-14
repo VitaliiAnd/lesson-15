@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>
+        <a href="../index.html"> Назад</a>
+    </h3>
+    <script>
+        class MultChecker{
+            constructor(checkedNum){
+                this.checkedNum = checkedNum
+                this.correctAnswersNum = 0
+                this.incorrectAnswersNum = 0
+            }
+            generateTask(){
+                let randomNum = 1 + Math.floor(Math.random() * 10)
+                let correctAnswer = this.checkedNum * randomNum
+                let usersAnswer = parseInt(prompt(`${this.checkedNum} * ${randomNum}`))
+                return {usersAnswer, correctAnswer}
+            }
+            checkedAnswer(){
+                do{
+                    let {usersAnswer, correctAnswer} = this.generateTask()
+                    if(usersAnswer === correctAnswer) this.correctAnswersNum++
+                    else this.incorrectAnswersNum++
+                }while (confirm('Продовжуємо?'))
+            }
+            render(){
+                document.write(`Рахуємо суму чисел${this.checkedNum}<br>
+                Правильниі відповіді:${this.correctAnswersNum}<br>
+                Hеправильні відповіді:${this.incorrectAnswersNum}
+                `)
+            }
+        }
+        let multChecker = new MultChecker(7)
+        multChecker.checkedAnswer()
+        multChecker.render()
+    </script>
+</body>
+</html>
